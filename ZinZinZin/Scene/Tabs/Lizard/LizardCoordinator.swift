@@ -22,7 +22,7 @@ final class LizardCoordinator: BaseCoordinator<Void> {
         set {}
     }
     
-    init(tab: Tab, parent navigationController: NavigationController) {
+    init(presenting navigationController: NavigationControllerReleaseHandler, tab: Tab) {
         
         self.tab = tab
         
@@ -30,7 +30,7 @@ final class LizardCoordinator: BaseCoordinator<Void> {
                                                        image: nil,
                                                        selectedImage: nil)
         
-        super.init(parent: navigationController)
+        super.init(presenting: navigationController)
     }
     
     override func start() -> AnyPublisher<Void, Never> {

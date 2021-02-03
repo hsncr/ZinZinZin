@@ -12,9 +12,9 @@ final class AppCoordinator: BaseCoordinator<Void> {
     
     let window: UIWindow
     
-    init(window: UIWindow) {
+    init(presenting navigationController: NavigationControllerReleaseHandler, in window: UIWindow) {
         self.window = window
-        super.init(parent: NavigationController())
+        super.init(presenting: navigationController)
     }
     
     override func start() -> AnyPublisher<Void, Never> {
@@ -26,7 +26,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     private func startSplash() {
-        let coordinator = SplashCoordinator()
+        let coordinator = SplashCoordinator(presenting: NavigationController())
         setRoot(to: coordinator, into: window)
             .sink { [unowned self] _ in
                 self.startTab()
@@ -34,7 +34,7 @@ final class AppCoordinator: BaseCoordinator<Void> {
     }
     
     private func startTab() {
-        let coordinator = TabCoordinator(tabs: Tab.allCases)
+        let coordinator = TabCoordinator(presenting: NavigationController(), tabs: Tab.allCases)
         setRoot(to: coordinator, into: window)
             .sink { [unowned self] _ in
                 self.startSplash()

@@ -11,38 +11,7 @@ import Combine
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func performAsyncActionAsFuture() -> Publishers.Coordinate<Void> {
-        return Publishers.Coordinate<Void> { subscriber -> Cancellable in
-            DispatchQueue.main.asyncAfter(deadline:.now() + 10) {
-                subscriber.send(completion: .finished)
-            }
-            
-            return AnyCancellable{}
-        }
-    }
-
-    var bag = Set<AnyCancellable>()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-//
-////        let completer = PassthroughSubject<Int, Never>()
-//////        let completer = Empty<Void, Never>().delay(for: 0.9, scheduler: RunLoop.main)
-//////        let completer = (0...4).publisher.delay(for: 0.1, scheduler: RunLoop.main)
-////
-//////      let publisher = CurrentValueSubject<Bool, Never>(true)
-////        let publisher = (0...4000).publisher
-////            .subscribe(on: DispatchQueue.global())
-//////
-////        publisher.prefix(untilCompleteFrom: completer)
-////            .print("Complete From")
-////            .sink { _ in }
-////            .store(in: &bag)
-//////
-////        DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
-////            completer.send(1)
-////        }
-//        CombineText().perform()
         
         return true
     }

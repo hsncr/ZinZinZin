@@ -34,7 +34,7 @@ open class BaseCoordinator<Result>: NSObject, Coordinator {
         fatalError("must override this")
     }
     
-    init(parent navigationController: NavigationController) {
+    init(presenting navigationController: NavigationControllerReleaseHandler) {
         self.router = Router(navigationController: navigationController)
     }
     

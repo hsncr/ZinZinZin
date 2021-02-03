@@ -19,10 +19,6 @@ final class SplashCoordinator: BaseCoordinator<Void> {
         set {}
     }
     
-    init() {
-        super.init(parent: NavigationController())
-    }
-    
     override func start() -> AnyPublisher<Void, Never> {
         return viewController.completedSubject
             .map { _ in () }

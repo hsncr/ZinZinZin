@@ -10,9 +10,9 @@ import UIKit
 // MARK: Router
 public class Router: NSObject, RouterProtocol {
     
-    public let navigationController: NavigationController
+    public let navigationController: NavigationControllerReleaseHandler
     
-    public init(navigationController: NavigationController) {
+    public init(navigationController: NavigationControllerReleaseHandler) {
         self.navigationController = navigationController
     }
     

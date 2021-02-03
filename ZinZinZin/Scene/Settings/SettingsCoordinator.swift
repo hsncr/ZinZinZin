@@ -28,7 +28,7 @@ final class SettingsCoordinator: BaseCoordinator<SettingsCoordinationResult> {
         
         let pushLogoutResult = viewController.pushSubject
             .flatMap { _ in
-                self.push(to: SettingsCoordinator(parent: self.router.navigationController))
+                self.push(to: SettingsCoordinator(presenting: self.router.navigationController))
             }
             .filter { $0 == .loggedOut }
         

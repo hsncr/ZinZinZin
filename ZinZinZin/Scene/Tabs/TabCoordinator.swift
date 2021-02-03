@@ -43,9 +43,9 @@ final class TabCoordinator: BaseCoordinator<Void> {
         set {}
     }
     
-    init(tabs: [Tab]) {
+    init(presenting navigationController: NavigationControllerReleaseHandler, tabs: [Tab]) {
         self.tabs = tabs
-        super.init(parent: NavigationController())
+        super.init(presenting: navigationController)
     }
     
     override func start() -> AnyPublisher<Void, Never> {
@@ -64,9 +64,9 @@ final class TabCoordinator: BaseCoordinator<Void> {
     private func configure(tab: Tab) -> BaseCoordinator<Void> {
         switch tab {
         case .waking:
-            return WakingUpCoordinator(tab: tab, parent: NavigationController())
+            return WakingUpCoordinator(presenting: NavigationController(), tab: tab)
         default:
-            return LizardCoordinator(tab: tab, parent: NavigationController())
+            return LizardCoordinator(presenting: NavigationController(), tab: tab)
         }
     }
 }

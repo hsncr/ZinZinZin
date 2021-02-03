@@ -22,9 +22,9 @@ final class SafariCoordinator: BaseCoordinator<Void> {
         set {}
     }
     
-    init(parent navigationController: NavigationController, url: URL) {
+    init(presenting navigationController: NavigationControllerReleaseHandler, url: URL) {
         self.url = url
-        super.init(parent: navigationController)
+        super.init(presenting: navigationController)
     }
     
     override func start() -> AnyPublisher<Void, Never> {

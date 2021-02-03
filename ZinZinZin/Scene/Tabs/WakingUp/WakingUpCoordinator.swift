@@ -23,7 +23,7 @@ final class WakingUpCoordinator: BaseCoordinator<Void> {
     
     private let tab: Tab
     
-    init(tab: Tab, parent navigationController: NavigationController) {
+    init(presenting navigationController: NavigationControllerReleaseHandler, tab: Tab) {
         
         self.tab = tab
         
@@ -31,7 +31,7 @@ final class WakingUpCoordinator: BaseCoordinator<Void> {
                                                        image: nil,
                                                        selectedImage: nil)
         
-        super.init(parent: navigationController)
+        super.init(presenting: navigationController)
     }
     
     override func start() -> AnyPublisher<Void, Never> {
@@ -60,12 +60,12 @@ final class WakingUpCoordinator: BaseCoordinator<Void> {
             return Empty().eraseToAnyPublisher()
         }
         
-        let coordinator = SafariCoordinator(parent: router.navigationController, url: url)
+        let coordinator = SafariCoordinator(presenting: router.navigationController, url: url)
         return present(to: coordinator)
     }
     
     private func startSettings() -> AnyPublisher<SettingsCoordinationResult, Never> {
-        let coordinator = SettingsCoordinator(parent: router.navigationController)
+        let coordinator = SettingsCoordinator(presenting: router.navigationController)
         return push(to: coordinator)
     }
 }

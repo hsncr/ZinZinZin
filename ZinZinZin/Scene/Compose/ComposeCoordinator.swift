@@ -27,7 +27,7 @@ final class ComposeCoordinator: BaseCoordinator<Bool> {
     
     init(presenting navigationController: NavigationController, tab: Tab) {
         self.tab = tab
-        super.init(parent: navigationController)
+        super.init(presenting: navigationController)
         self.source = viewController
     }
     

@@ -35,7 +35,6 @@
 		619698802594EAE200CA0538 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619698702594EAE200CA0538 /* ComposeViewController.swift */; };
 		619698812594EAE200CA0538 /* SafariCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619698722594EAE200CA0538 /* SafariCoordinator.swift */; };
 		619698822594EAE200CA0538 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619698742594EAE200CA0538 /* UIView+Constraints.swift */; };
-		6196B91E259E3A06004A675F /* CombineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196B91D259E3A06004A675F /* CombineTest.swift */; };
 		61F2DF5425C0CB18003AE26C /* Combine+Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F2DF5125C0CB17003AE26C /* Combine+Lock.swift */; };
 		61F2DF5525C0CB18003AE26C /* DemandableSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F2DF5225C0CB18003AE26C /* DemandableSubscriber.swift */; };
 		61F2DF5625C0CB18003AE26C /* TakeUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F2DF5325C0CB18003AE26C /* TakeUntil.swift */; };
@@ -93,7 +92,6 @@
 		619698702594EAE200CA0538 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		619698722594EAE200CA0538 /* SafariCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariCoordinator.swift; sourceTree = "<group>"; };
 		619698742594EAE200CA0538 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		6196B91D259E3A06004A675F /* CombineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineTest.swift; sourceTree = "<group>"; };
 		61F2DF5125C0CB17003AE26C /* Combine+Lock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Combine+Lock.swift"; sourceTree = "<group>"; };
 		61F2DF5225C0CB18003AE26C /* DemandableSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandableSubscriber.swift; sourceTree = "<group>"; };
 		61F2DF5325C0CB18003AE26C /* TakeUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeUntil.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				6196985F2594EAE200CA0538 /* Scene */,
 				619697E62593D03000CA0538 /* AppDelegate.swift */,
 				619697E82593D03000CA0538 /* SceneDelegate.swift */,
-				6196B91D259E3A06004A675F /* CombineTest.swift */,
 				619697EF2593D03200CA0538 /* Assets.xcassets */,
 				619697F12593D03200CA0538 /* LaunchScreen.storyboard */,
 				619697F42593D03200CA0538 /* Info.plist */,
@@ -443,7 +440,6 @@
 				6196987E2594EAE200CA0538 /* AppCoordinator.swift in Sources */,
 				619698462594AF3100CA0538 /* Coordinator.swift in Sources */,
 				619698822594EAE200CA0538 /* UIView+Constraints.swift in Sources */,
-				6196B91E259E3A06004A675F /* CombineTest.swift in Sources */,
 				6196987B2594EAE200CA0538 /* SettingsViewController.swift in Sources */,
 				6196987D2594EAE200CA0538 /* SplashViewController.swift in Sources */,
 				6196987F2594EAE200CA0538 /* ComposeCoordinator.swift in Sources */,
