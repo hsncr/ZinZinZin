@@ -49,15 +49,15 @@ open class BaseCoordinator<Result>: NSObject, Coordinator {
     }
     
     /// calls start method of coordinator to observe returned events. clear coordinator from memory if emits output
-    private func coordinate<C: Coordinator, U>(to coordinator: C) -> AnyPublisher<U, Never> where U == C.CoordinationResult {
+    func coordinate<C: Coordinator, U>(to coordinator: C) -> AnyPublisher<U, Never> where U == C.CoordinationResult {
         
         store(coordinator)
         
         return coordinator.start()
+            .prefix(1)
             .handleEvents(receiveOutput: { _ in
                 self.free(coordinator)
             })
-            .prefix(1)
             .eraseToAnyPublisher()
         
     }
@@ -98,10 +98,10 @@ open class BaseCoordinator<Result>: NSObject, Coordinator {
             .eraseToAnyPublisher()
     }
     
-    /// set source view controller of coordinator into navigation stack.
+    // set source view controller of coordinator into navigation stack.
     public func set<C: Coordinator, U>(to coordinator: C, animated: Bool = true) -> AnyPublisher<U, Never> where U == C.CoordinationResult {
         
-        coordinator.router.setViewController(coordinator, animated: animated)
+        router.setViewController(coordinator, animated: animated)
         
         return coordinate(to: coordinator)
             .eraseToAnyPublisher()
@@ -118,11 +118,9 @@ open class BaseCoordinator<Result>: NSObject, Coordinator {
             .eraseToAnyPublisher()
     }
     
-    
     /// configure events
     open func start() -> AnyPublisher<Result, Never> {
         fatalError("must override this")
     }
-    
 }
 

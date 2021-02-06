@@ -18,7 +18,10 @@ final class LizardCoordinator: BaseCoordinator<Void> {
     }()
     
     override var source: UIViewController  {
-        get { viewController }
+        get {
+            router.navigationController.viewControllers = [viewController]
+            return router.navigationController
+        }
         set {}
     }
     

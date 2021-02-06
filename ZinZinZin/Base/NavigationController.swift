@@ -58,7 +58,6 @@ extension NavigationController: ReleaseHandler {
         // and just call popCompletion to indicate animation is completed
         if let popCompletion = releaseClosures.removeValue(forKey: "\(viewController.description).pop") {
             popCompletion()
-            removeRelease(for: viewController)
             return
         }
         
@@ -80,33 +79,5 @@ extension NavigationController {
     
     public override var childForStatusBarHidden: UIViewController? {
         return topViewController
-    }
-}
-
-
-extension UINavigationController {
-    
-    func pushViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> ()) {
-        pushViewController(viewController, animated: animated)
-        
-        if animated, let coordinator = transitionCoordinator {
-            coordinator.animate(alongsideTransition: nil) { _ in
-                completion()
-            }
-        } else {
-            completion()
-        }
-    }
-    
-    func popViewController(animated: Bool, completion:  @escaping () -> ()) {
-        popViewController(animated: animated)
-        
-        if animated, let coordinator = transitionCoordinator {
-            coordinator.animate(alongsideTransition: nil) { _ in
-                completion()
-            }
-        } else {
-            completion()
-        }
     }
 }

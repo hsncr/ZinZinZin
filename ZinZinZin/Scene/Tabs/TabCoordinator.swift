@@ -50,14 +50,16 @@ final class TabCoordinator: BaseCoordinator<Void> {
     
     override func start() -> AnyPublisher<Void, Never> {
         
-        let result = tabs.map(configure(tab:))
+        let coordinators = tabs.map(configure(tab:))
         
-        let masters = result.map { $0.router.navigationController }
+        let masters = coordinators.map { $0.source }
+        
+        let result = coordinators.map { coordinate(to: $0) }
     
         tabbarController.viewControllers = masters
         tabbarController.selectedIndex = masters.count - 1 
         
-        return Publishers.MergeMany(result.map { set(to: $0) })
+        return Publishers.MergeMany(result)
             .eraseToAnyPublisher()
     }
     
