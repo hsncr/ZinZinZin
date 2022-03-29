@@ -37,7 +37,8 @@ final class SettingsViewController: BaseViewController {
 
     private lazy var logoutButton: UIButton = {
         let button = UIButton(type: .system, primaryAction: UIAction(handler: { [unowned self] _ in
-            self.logoutSubject.send(true)
+//            self.logoutSubject.send(true)
+            NotificationCenter.default.post(name: Notification.Name("UserLoggedOut"), object: nil)
         }))
         button.contentHorizontalAlignment = .center
         button.setTitle("Logout", for: .normal)

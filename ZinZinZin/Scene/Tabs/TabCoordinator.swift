@@ -57,9 +57,19 @@ final class TabCoordinator: BaseCoordinator<Void> {
         let result = coordinators.map { coordinate(to: $0) }
     
         tabbarController.viewControllers = masters
-        tabbarController.selectedIndex = masters.count - 1 
+        tabbarController.selectedIndex = masters.count - 1
+        
+        let logoutEvent = NotificationCenter.default.publisher(
+            for: Notification.Name("UserLoggedOut"),
+            object: nil
+            )
+            .map { _ -> Void in
+                return ()
+            }
+            .eraseToAnyPublisher()
         
         return Publishers.MergeMany(result)
+            .merge(with: logoutEvent)
             .eraseToAnyPublisher()
     }
     
