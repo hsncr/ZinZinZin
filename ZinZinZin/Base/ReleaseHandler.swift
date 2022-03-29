@@ -10,7 +10,9 @@ import UIKit
 public typealias ReleaseClosure = (() -> ())
 
 // MARK: Release Handler
-@objc public protocol ReleaseHandler: class, UINavigationControllerDelegate {
+@objc public protocol ReleaseHandler: AnyObject, UINavigationControllerDelegate {
+    
+    var keys: [String] { get }
     
     func configureRelease(for viewController: UIViewController,
                           using completion: @escaping ReleaseClosure)
@@ -27,13 +29,18 @@ public typealias ReleaseClosure = (() -> ())
 extension ReleaseHandler {
     
     @discardableResult
-    public func detectPopedController(on navigationController: UINavigationController) -> UIViewController? {
+    public func detectPopedController(on navigationController: UINavigationController) -> [String] {
         
-        guard let fromController = navigationController.transitionCoordinator?.viewController(forKey: .from),
-              navigationController.viewControllers.contains(fromController) == false else {
-            return nil
+        guard let fromController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
+            return []
         }
         
-        return fromController
+        let missing = keys.filter { key in
+            navigationController.viewControllers.contains { viewController in
+                viewController.description == key
+            } == false
+        }
+        
+        return missing
     }
 }
